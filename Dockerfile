@@ -7,6 +7,7 @@ ADD . /scm-springboot
 WORKDIR /scm-springboot
 # Just echo so we can see, if everything is there :)
 RUN ls -l
+RUN PWD
 RUN java --version
 # Run Maven build
 RUN mvn clean install
@@ -21,7 +22,7 @@ VOLUME /tmp
 USER 10014
 
 # Add Spring Boot app.jar to Container
-COPY --from=0 "/target/school-*.jar" app.jar
+COPY --from=0 "/scm-springboot/target/school-management-system-0.0.1-SNAPSHOT.jar" app.jar
 
 # Fire up our Spring Boot app by default
 CMD [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=render -jar /app.jar" ]
