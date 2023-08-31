@@ -11,12 +11,12 @@ RUN mvn clean install
 FROM openjdk:20-jdk
 
 
-RUN addgroup -g 10014 choreo && \
-    adduser  --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser \
+RUN addgroup -g 10015 choreo && \
+    adduser  --disabled-password  --no-create-home --uid 10015 --ingroup choreo1 choreouser1 \
 
 VOLUME /tmp
 
-USER 10014
+USER 10015
 
 # Add Spring Boot app.jar to Container
 COPY --from=0 "/smc-springboot/target/school-*.jar" app.jar
