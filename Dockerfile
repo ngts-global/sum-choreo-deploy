@@ -7,6 +7,7 @@ ADD . /scm-springboot
 WORKDIR /scm-springboot
 # Just echo so we can see, if everything is there :)
 RUN ls -l
+RUN java --version
 # Run Maven build
 RUN mvn clean install
 
