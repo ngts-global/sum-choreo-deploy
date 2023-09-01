@@ -14,10 +14,9 @@ RUN apk add --upgrade libtasn1-progs
 # https://security.alpinelinux.org/vuln/CVE-2022-37434
 RUN apk update && apk upgrade zlib
 # Create a new user with UID 10014
-#RUN addgroup -g 10014 choreo && \
- #   adduser  --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser
+RUN addgroup -g 10016 choreo &&  adduser  --disabled-password  --no-create-home --uid 10016 --ingroup choreo choreouser
 VOLUME /tmp
-USER 10014
+USER 10016
 # Add Spring Boot app.jar to Container
 COPY --from=0 "/java-springboot/target/school-*.jar" app.jar
 # Fire up our Spring Boot app by default
